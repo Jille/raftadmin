@@ -16,7 +16,21 @@ Adding the call to `raftadmin.Register` will register a new gRPC service on your
 
 For example, I use this to add servers (voters) after initial bootstrap.
 
-## Example calls
+## Invocations
+
+```shell
+$ raftadmin
+Usage: raftadmin <host:port> <command> <args...>
+Commands: add_nonvoter, add_voter, applied_index, apply_log, await, barrier, demote_voter, forget, get_configuration, last_contact, last_index, leader, leadership_transfer, leadership_transfer_to_server, remove_server, shutdown, snapshot, state, stats, verify_leader
+
+$ raftadmin 127.0.0.1:50051 add_voter serverb 127.0.0.1:50052 0
+Invoking AddVoter(id: "serverb" address: "127.0.0.1:50052")
+Response: operation_token:  "4a86d2efa417af281ac540bfede8fcb735e0b224"
+Invoking Await(id: "serverb" address: "127.0.0.1:50052")
+Response: index:  3
+```
+
+## Raw calls
 
 ```shell
 $ grpc_cli call 127.0.0.1:50051 RaftAdmin.AddVoter 'id: "serverb" address: "127.0.0.1:50052"'
