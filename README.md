@@ -26,7 +26,7 @@ Commands: add_nonvoter, add_voter, applied_index, apply_log, await, barrier, dem
 $ raftadmin 127.0.0.1:50051 add_voter serverb 127.0.0.1:50052 0
 Invoking AddVoter(id: "serverb" address: "127.0.0.1:50052")
 Response: operation_token:  "4a86d2efa417af281ac540bfede8fcb735e0b224"
-Invoking Await(id: "serverb" address: "127.0.0.1:50052")
+Invoking Await(operation_token: "4a86d2efa417af281ac540bfede8fcb735e0b224")
 Response: index:  3
 ```
 

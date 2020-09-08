@@ -145,7 +145,7 @@ func do() error {
 	// This method returned a future. We should call Await to get the result, and then Forget to free up the memory of the server.
 	if f, ok := resp.(*pb.Future); ok {
 		c := pb.NewRaftAdminClient(conn)
-		log.Printf("Invoking Await(%s)", prototext.Format(req.Interface()))
+		log.Printf("Invoking Await(%s)", prototext.Format(f))
 		resp, err := c.Await(ctx, f)
 		if err != nil {
 			return err
