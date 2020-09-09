@@ -12,6 +12,8 @@ raftadmin.Register(s, r)
 // ...
 ```
 
+(Want more example code? Check out main.go at https://github.com/Jille/raft-grpc-example)
+
 Adding the call to `raftadmin.Register` will register a new gRPC service on your existing server that exposes a bunch of methods so they can be called remotely.
 
 For example, I use this to add servers (voters) after initial bootstrap.
