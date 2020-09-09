@@ -15,6 +15,9 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/protobuf/encoding/prototext"
 	"google.golang.org/protobuf/reflect/protoreflect"
+
+	// Allow dialing multiple nodes with multi:///.
+	_ "github.com/Jille/grpc-multi-resolver"
 )
 
 func main() {
