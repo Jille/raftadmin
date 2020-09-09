@@ -47,6 +47,18 @@ AddVoter starts a new raft operation and returns once it is enqueued. It returns
 
 Last, call Forget to make the server forget the operation token and free up the memory.
 
+## Talking to the leader
+
+Some RPCs always need to go to the leader. Add https://github.com/Jille/raft-grpc-leader-rpc to your servers and use `--leader`:
+
+```shell
+$ raftadmin --leader multi:///127.0.0.1:50051,127.0.0.1:50052,127.0.0.1:50053 barrier
+Invoking AddVoter(id: "serverb" address: "127.0.0.1:50052")
+Response: operation_token:  "c9c7d6a5243b706ebd699791b273f58d2b471bb9"
+Invoking Await(operation_token: "c9c7d6a5243b706ebd699791b273f58d2b471bb9")
+Response: index:  4
+```
+
 ## Missing methods
 
 * AddPeer/RemovePeer are deprecated in raft.
