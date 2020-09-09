@@ -18,6 +18,9 @@ import (
 
 	// Allow dialing multiple nodes with multi:///.
 	_ "github.com/Jille/grpc-multi-resolver"
+
+	// Register health checker with gRPC.
+	_ "google.golang.org/grpc/health"
 )
 
 func main() {
@@ -71,6 +74,8 @@ func messageFromDescriptor(d protoreflect.MessageDescriptor) protoreflect.Messag
 func do() error {
 	ctx := context.Background()
 	methods := pb.File_raftadmin_proto.Services().ByName("RaftAdmin").Methods()
+	leader := flag.Bool("leader", false, "Whether to dial to the leader (requires https://github.com/Jille/raft-grpc-leader-rpc)")
+	healthCheckService := flag.String("health_check_service", "quis.RaftLeader", "Which gRPC service to health check when searching for the leader")
 	flag.Parse()
 
 	if flag.NArg() < 2 {
@@ -132,7 +137,11 @@ func do() error {
 	}
 
 	// Connect and send the RPC.
-	conn, err := grpc.Dial(target, grpc.WithInsecure(), grpc.WithBlock())
+	var o grpc.DialOption = grpc.EmptyDialOption{}
+	if *leader {
+		o = grpc.WithDefaultServiceConfig(fmt.Sprintf(`{"healthCheckConfig": {"serviceName": "%s"}, "loadBalancingConfig": [ { "round_robin": {} } ]}`, *healthCheckService))
+	}
+	conn, err := grpc.Dial(target, grpc.WithInsecure(), grpc.WithBlock(), o)
 	if err != nil {
 		return err
 	}
