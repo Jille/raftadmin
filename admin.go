@@ -165,7 +165,7 @@ func (a *admin) RemoveServer(ctx context.Context, req *pb.RemoveServerRequest) (
 }
 
 func (a *admin) Shutdown(ctx context.Context, req *pb.ShutdownRequest) (*pb.Future, error) {
-	return toFuture(a.r.Snapshot())
+	return toFuture(a.r.Shutdown())
 }
 
 func (a *admin) Snapshot(ctx context.Context, req *pb.SnapshotRequest) (*pb.Future, error) {
