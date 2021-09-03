@@ -2,6 +2,8 @@ cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMT
 cloud.google.com/go v0.34.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/DataDog/datadog-go v2.2.0+incompatible/go.mod h1:LButxg5PwREeZtORoXG3tL4fMGNddJ+vMq1mwgfaqoQ=
+github.com/Jille/grpc-multi-resolver v1.0.0 h1:wqaMHLDpaNNV9qr3NTC76EzfOYfoov3EpF8XqU37+G8=
+github.com/Jille/grpc-multi-resolver v1.0.0/go.mod h1:2RAAhSVfe+0pON+CxFTMbnRkJgmJXjxsUCWxnHVd6AE=
 github.com/Jille/raftadmin v1.2.0 h1:hMLFUK7iKpeXP+CoIhNMWj+F53XOLSjMDSia0C60cps=
 github.com/Jille/raftadmin v1.2.0/go.mod h1:vtVEpToPGTUPVwwunypWDpi69JpdnHMhWRUlc/65U+Y=
 github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=

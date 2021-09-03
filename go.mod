@@ -3,6 +3,7 @@ module github.com/Jille/raftadmin
 go 1.17
 
 require (
+	github.com/Jille/grpc-multi-resolver v1.0.0
 	github.com/golang/protobuf v1.5.2
 	github.com/hashicorp/raft v1.3.1
 	github.com/iancoleman/strcase v0.2.0
